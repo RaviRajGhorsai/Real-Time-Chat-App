@@ -1,0 +1,9 @@
+<span id="online-count" hx-swap-oob="outerHTML" class="text-sm font-light">
+    {{ online_count }} Online
+</span>
+
+{% if online_count %}
+<div id="online-icon" class="w-3 h-3 bg-green-500 rounded-full"></div>
+{% else %}
+<div id="online-icon" class="w-3 h-3 bg-gray-500 rounded-full"></div>
+{% endif %}

@@ -1,0 +1,19 @@
+{% extends "chat/base.html" %}
+{% block image_upload %}
+<div class="min-h-screen flex items-center justify-center bg-gray-100">
+  <form method="post" enctype="multipart/form-data" class="w-full max-w-md bg-white p-6 rounded-xl shadow-md space-y-4">
+    {% csrf_token %}
+
+    <div>
+      <label for="image" class="block text-sm font-medium text-gray-700">Upload Profile Image</label>
+      <input type="file" name="image" id="image" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" required>
+    </div>
+
+    <div>
+      <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition">
+        Upload
+      </button>
+    </div>
+  </form>
+</div>
+{% endblock %}

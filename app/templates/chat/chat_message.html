@@ -1,0 +1,34 @@
+
+{% if message.user == user %}
+      <div class="flex justify-end">
+        <div class="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg max-w-xs">
+         {{ message.message}}
+        </div>
+      </div>
+{% else %}
+      <div class="flex justify-start">
+    {% if sender_profile %}
+        {% if sender_profile.user == message.user %}
+          <a href="{% url 'profile' message.user.username %}">
+          <img src="{{ sender_profile.image.url }}" alt="User" class="w-10 h-10 rounded-full" />
+          </a>
+        {% endif %}
+    {% else %}
+    {% for p in profile %}
+        {% if p.user == message.user %}
+        <a href="{% url 'profile' message.user.username %}">
+        <img src="{{ p.image.url }}" alt="User" class="w-10 h-10 rounded-full" />
+        </a>
+        {% endif %}
+    {% endfor %} 
+  {% endif %}   
+
+        <div class="bg-blue-500 text-white px-4 py-2 rounded-lg max-w-xs">
+          {{ message.message }}
+        </div>
+      </div>
+      <div class="text-sm font-light py-0 ml-0"> 
+        <span class="text-black-400">@{{ message.user.username }}</span>
+    </div>
+
+{% endif %}

@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 import os
 import environ
+ 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,16 +27,13 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-t54f4!-w2d_cblnv047*10nwhe6o8s&g3p-)oic_$(8zafdg)0'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG', default=False)
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'real-time-chat-app-06zl.onrender.com']
 CSRF_TRUSTED_ORIGINS = ['https://real-time-chat-app-06zl.onrender.com']
-
-export DJANGO_SETTINGS_MODULE=Project.settings
-
 
 # Application definition
 
@@ -48,7 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',
-    
+    'channels'
     'django_htmx',
 ]
 

@@ -34,6 +34,9 @@ DEBUG = env('DEBUG', default=False)
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'real-time-chat-app-06zl.onrender.com']
 CSRF_TRUSTED_ORIGINS = ['https://real-time-chat-app-06zl.onrender.com']
 
+export DJANGO_SETTINGS_MODULE=Project.settings
+
+
 # Application definition
 
 INSTALLED_APPS = [

@@ -31,8 +31,8 @@ SECRET_KEY = 'django-insecure-t54f4!-w2d_cblnv047*10nwhe6o8s&g3p-)oic_$(8zafdg)0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG', default=False)
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'real-time-chat-app-06zl.onrender.com']
+CSRF_TRUSTED_ORIGINS = ['https://real-time-chat-app-06zl.onrender.com']
 
 # Application definition
 
@@ -144,7 +144,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
-
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 

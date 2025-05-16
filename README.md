@@ -26,6 +26,7 @@ A real-time private and group chat application built using **Django**, **Django 
 ```bash
 git clone https://github.com/yourusername/your-chat-app.git
 cd your-chat-app
+```
 
 ## Live At
 

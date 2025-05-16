@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'django_htmx',
     'whitenoise.runserver_nostatic',
-    'django.contrib.staticfiles',
+    
 ]
 
 MIDDLEWARE = [

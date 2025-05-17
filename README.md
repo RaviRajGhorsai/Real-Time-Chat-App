@@ -24,8 +24,8 @@ A real-time private and group chat application built using **Django**, **Django 
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/your-chat-app.git
-cd your-chat-app
+git clone https://github.com/RaviRajGhorsai/Real-Time-Chat-App.git
+cd Real-Time-Chat-App
 pip install -r requirements.txt
 ```
 

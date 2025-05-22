@@ -53,6 +53,6 @@ class GroupMessage(models.Model):
     @property
     def decrypt_message(self):
         try:
-            return f.encrypt(self.message.encode()).decode()
+            return f.decrypt(self.message.encode()).decode()
         except Exception:
             return self.message

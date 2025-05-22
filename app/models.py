@@ -3,10 +3,22 @@ from django.contrib.auth.models import AbstractUser
 import shortuuid
 import uuid
 from cloudinary.models import CloudinaryField
+from cryptography.fernet import Fernet
+import os
+import environ
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+env = environ.Env(
+        DEBUG=(bool, False)
+)
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+f = Fernet(env('ENCRYPT_KEY'))
+
 # Create your models here.
 
 class User(AbstractUser):
-    # Add any additional fields you want to the user model here
+    
     email = models.EmailField(unique=True)
 
 class Profile(models.Model):
@@ -37,3 +49,10 @@ class GroupMessage(models.Model):
 
     def __str__(self):
         return f"{self.user.username}: {self.message}"
+    
+    @property
+    def decrypt_message(self):
+        try:
+            return f.encrypt(self.message.encode()).decode()
+        except Exception:
+            return self.message

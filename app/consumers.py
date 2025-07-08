@@ -4,6 +4,19 @@ from .models import Group, GroupMessage, User, Profile
 from django.template.loader import render_to_string
 from asgiref.sync import async_to_sync
 import json
+from cryptography.fernet import Fernet
+import os
+import environ
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+env = environ.Env(
+        DEBUG=(bool, False)
+)
+
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
+f = Fernet(env('ENCRYPT_KEY'))
 
 class ChatConsumer(WebsocketConsumer):
     def connect(self):
@@ -41,6 +54,8 @@ class ChatConsumer(WebsocketConsumer):
             print("No message received")
             return
         print(message)
+        plain_text = message
+        message = f.encrypt(plain_text.encode()).decode()
         try:
             group_message = GroupMessage.objects.create(
                 group=self.chat_room,
@@ -71,7 +86,7 @@ class ChatConsumer(WebsocketConsumer):
         group_message = get_object_or_404(GroupMessage, id=message_id)
         sender = group_message.user
         
-        sender_profile = Profile.objects.get(user=sender)
+        sender_profile, _ = Profile.objects.get_or_create(user=sender)
         context ={
             'message': group_message,
             'user': self.user,

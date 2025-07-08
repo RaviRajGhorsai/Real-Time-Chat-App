@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 import os
 import environ
-import cloudinary
+
 from django.conf import settings
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',
+    'newsfeed',
     'cloudinary',
     'cloudinary_storage',
     'django_htmx',
@@ -71,7 +72,7 @@ ROOT_URLCONF = 'Project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -96,7 +97,7 @@ CHANNEL_LAYERS = {
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 ENVIRONMENT = env('ENVIRONMENT', default='development')
-ENVIRONMENT = 'production'
+ENVIRONMENT = 'development'
 
 if ENVIRONMENT == 'development':
     DATABASES = {

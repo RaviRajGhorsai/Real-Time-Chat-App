@@ -1,5 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+<<<<<<< HEAD
+=======
+import shortuuid
+import uuid
+from cloudinary.models import CloudinaryField
+>>>>>>> 49eb16576bb017e310809ee49d8be147a00f083d
 from cryptography.fernet import Fernet
 import os
 import environ
@@ -9,6 +15,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 env = environ.Env(
         DEBUG=(bool, False)
 )
+<<<<<<< HEAD
 
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
@@ -16,16 +23,26 @@ f = Fernet(env('ENCRYPT_KEY'))
 
 
 # from cloudinary.models import CloudinaryField
+=======
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+f = Fernet(env('ENCRYPT_KEY'))
+
+>>>>>>> 49eb16576bb017e310809ee49d8be147a00f083d
 # Create your models here.
 
 class User(AbstractUser):
-    # Add any additional fields you want to the user model here
+    
     email = models.EmailField(unique=True)
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+<<<<<<< HEAD
     image = models.ImageField(upload_to='uploads/', blank=True, null=True)
     # image = CloudinaryField(blank=True, null=True)
+=======
+    # image = models.ImageField(upload_to='uploads/', blank=True, null=True)
+    image = CloudinaryField(blank=True, null=True)
+>>>>>>> 49eb16576bb017e310809ee49d8be147a00f083d
     
     def __str__(self):
         return self.user.username

@@ -54,13 +54,13 @@ class ChatConsumer(WebsocketConsumer):
             print("No message received")
             return
         print(message)
-<<<<<<< HEAD
+
         plain_text = message
         message = f.encrypt(plain_text.encode()).decode()
-=======
+
         plaintext = message
         message = f.encrypt(plaintext.encode()).decode()
->>>>>>> 49eb16576bb017e310809ee49d8be147a00f083d
+
         try:
             group_message = GroupMessage.objects.create(
                 group=self.chat_room,

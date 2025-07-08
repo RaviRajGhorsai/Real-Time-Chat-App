@@ -14,12 +14,6 @@ from pathlib import Path
 import os
 import environ
 
-<<<<<<< HEAD
-from django.conf import settings
-=======
->>>>>>> 49eb16576bb017e310809ee49d8be147a00f083d
-
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 env = environ.Env(

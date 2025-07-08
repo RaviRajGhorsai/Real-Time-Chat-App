@@ -20,15 +20,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-<<<<<<< HEAD
+
     path('admin/', admin.site.urls),
     path('', include('app.urls', namespace='app')),
     path('newsfeed/', include('newsfeed.urls', namespace='newsfeed')),
-=======
-    
+
     path('theboss/', admin.site.urls),
     path('', include('app.urls')),
->>>>>>> 49eb16576bb017e310809ee49d8be147a00f083d
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

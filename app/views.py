@@ -97,7 +97,7 @@ def login_view(request):
                 print(f"Error sending email: {e}")
                 return render(request, 'login.html', {'error': 'Failed to send OTP email'})
             # Redirect to the OTP verification page 
-            return redirect('app:dashboard')  
+            return redirect('app:otp_verify')  
         else:
             print("invalid credentials")
             return render(request, 'login.html', {'error': 'Invalid username or password'})

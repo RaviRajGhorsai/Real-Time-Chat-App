@@ -17,12 +17,12 @@
     {% else %}
     {% for p in profile %}
         {% if p.user == message.user %}
-<<<<<<< HEAD
+
         <a href="{% url 'app:profile' message.user.username %}">
-=======
+
         <a href="{% url 'profile' message.user.username %}">
           {% if p.image %}
->>>>>>> 49eb16576bb017e310809ee49d8be147a00f083d
+
         <img src="{{ p.image.url }}" alt="User" class="w-10 h-10 rounded-full" />
           {% else %}
           <img src="{% static 'images/default_img.png' %}" alt="User" class="w-10 h-10 rounded-full" />

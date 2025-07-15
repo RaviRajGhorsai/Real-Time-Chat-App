@@ -43,6 +43,7 @@ class Profile(models.Model):
         return self.user.username
     
 class Group(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=100, unique=True)
     online_users = models.ManyToManyField(User, related_name='online_count', blank=True)
     members = models.ManyToManyField(User, related_name='members', blank=True)

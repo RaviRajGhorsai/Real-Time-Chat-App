@@ -9,6 +9,8 @@ from django.contrib import messages
 from datetime import datetime, timedelta
 import hashlib
 import secrets
+import shortuuid
+import uuid
 from utils import send_register_mail, send_otp_mail, verify_mail
 from .models import Group, GroupMessage, Profile
 from .forms import chatMessageForm
@@ -64,7 +66,8 @@ def signup(request):
         email_verification = verify_mail(email)
         if email_verification == True:
             user = User.objects.create_user(username=username, password=password1, email=email)
-            group, created = Group.objects.get_or_create(name="Public")
+            group, created = Group.objects.get_or_create(name="Public",
+                                                         defaults={"id": uuid.uuid4()})
             group.members.add(user)
             
             send_register_mail(email, username)

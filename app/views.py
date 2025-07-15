@@ -87,7 +87,7 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         
         if user is not None:
-            login(request, user)
+            
             request.session['otp_verified'] = True
             otp = ''.join(str(secrets.randbelow(10)) for _ in range(6))
             request.session['otp'] = hashlib.sha256(otp.encode()).hexdigest()

@@ -30,8 +30,8 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG', default=False)
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'real-time-chat-app-ufyw.onrender.com']
-CSRF_TRUSTED_ORIGINS = ['https://real-time-chat-app-ufyw.onrender.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'real-time-chat-app-06zl.onrender.com']
+CSRF_TRUSTED_ORIGINS = ['https://real-time-chat-app-06zl.onrender.com']
 
 # Application definition
 

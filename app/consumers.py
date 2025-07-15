@@ -58,9 +58,6 @@ class ChatConsumer(WebsocketConsumer):
         plain_text = message
         message = f.encrypt(plain_text.encode()).decode()
 
-        plaintext = message
-        message = f.encrypt(plaintext.encode()).decode()
-
         try:
             group_message = GroupMessage.objects.create(
                 group=self.chat_room,

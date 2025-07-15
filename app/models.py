@@ -18,11 +18,6 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 f = Fernet(env('ENCRYPT_KEY'))
 
 
-# from cloudinary.models import CloudinaryField
-
-environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
-f = Fernet(env('ENCRYPT_KEY'))
-
 
 # Create your models here.
 
@@ -34,7 +29,6 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
 
     image = models.ImageField(upload_to='uploads/', blank=True, null=True)
-    # image = CloudinaryField(blank=True, null=True)
 
     # image = models.ImageField(upload_to='uploads/', blank=True, null=True)
     image = CloudinaryField(blank=True, null=True)

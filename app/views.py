@@ -185,6 +185,7 @@ def chat_view(request, chatroom_name="Public"):
             
             chat_group = get_object_or_404(Group, name=chatroom_name)
             chat_messages = chat_group.messages.order_by('-created')[:30][::-1]
+            
             form = chatMessageForm()
         
             other_user = chat_group.members.exclude(id=request.user.id)

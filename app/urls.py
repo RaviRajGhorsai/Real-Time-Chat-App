@@ -1,12 +1,13 @@
 from django.urls import path
 from . import views
 
+app_name = 'app'
 urlpatterns = [
     path('', views.home_view, name='home'),
     path('login/', views.login_view, name='login'),
     path('signup/', views.signup, name='signup'),
     path('otp-verify/', views.otp_verify, name='otp_verify'),
-    path('dashboard/', views.dashboard, name='dashboard'),
+    path('newsfeed/', views.dashboard, name='dashboard'),
     path('logout/', views.logout_view, name='logout'),
     # path('create-group/', views.create_group_view, name='create_group'),
     # path('join-group/', views.join_group_view, name='join_group'),

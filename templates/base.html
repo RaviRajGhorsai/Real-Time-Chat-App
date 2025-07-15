@@ -15,7 +15,13 @@
   <!-- Banner / Navbar -->
   <nav class="bg-white shadow-md">
     <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-      <a href="{% url 'dashboard' %}" class="text-2xl font-bold text-gray-800">Home</a>
+     
+       <a class="text-gray-700 focus:outline-none mr-4" href="{% url 'newsfeed:sidebar' %}">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </a> 
+      <a href="{% url 'app:dashboard' %}" class="text-2xl font-bold text-gray-800">Home</a>
       <div class="space-x-6">
         <div class="relative inline-block text-left">
           <!-- Dropdown -->
@@ -37,14 +43,14 @@
             class="absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden z-10"
           >
             <div class="py-1" role="menu">
-              <a href="{% url 'joinChat' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-100" role="menuitem">
+              <a href="{% url 'app:joinChat' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-100" role="menuitem">
                 Join Public chat
               </a>
               {% for chatroom in user.members.all %}
                 {% if chatroom.is_private %}
                   {% for member in chatroom.members.all %}
                     {% if member != user %}
-                        <a href="{% url 'chatroom' chatroom %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-100" role="menuitem">
+                        <a href="{% url 'app:chatroom' chatroom %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-100" role="menuitem">
                         {{ member.username }}
                         </a>
                     {% endif %}
@@ -55,17 +61,17 @@
           </div>
         </div>
 
-        <a href="{% url 'profile' user.username  %}" class="text-gray-600 hover:text-blue-600 font-medium">Profile</a>
-        <a href="{% url 'logout' %}" class="text-red-600 hover:text-red-800 font-medium">Logout</a>
+        <a href="{% url 'app:profile' user.username  %}" class="text-gray-600 hover:text-blue-600 font-medium">Profile</a>
+        <a href="{% url 'app:logout' %}" class="text-red-600 hover:text-red-800 font-medium">Logout</a>
+         
       </div>
     </div>
   </nav>
 
-  {% block home %}
- 
- {% endblock %}
+ {% block sidebar %}
+  {% endblock %}
 
-  {% block profile%}
+  {% block home %}
   {% endblock %}
 
   {% block image_upload %}
@@ -75,6 +81,9 @@
   {% endblock %}
 
   {% block script %}
+  {% endblock %}
+
+  {% block profile %}
   {% endblock %}
 </body>
 

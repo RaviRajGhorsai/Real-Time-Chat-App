@@ -10,15 +10,19 @@
       <div class="flex justify-start">
     {% if sender_profile %}
         {% if sender_profile.user == message.user %}
-          <a href="{% url 'profile' message.user.username %}">
+          <a href="{% url 'app:profile' message.user.username %}">
           <img src="{{ sender_profile.image.url }}" alt="User" class="w-10 h-10 rounded-full" />
           </a>
         {% endif %}
     {% else %}
     {% for p in profile %}
         {% if p.user == message.user %}
+
+        <a href="{% url 'app:profile' message.user.username %}">
+
         <a href="{% url 'profile' message.user.username %}">
           {% if p.image %}
+
         <img src="{{ p.image.url }}" alt="User" class="w-10 h-10 rounded-full" />
           {% else %}
           <img src="{% static 'images/default_img.png' %}" alt="User" class="w-10 h-10 rounded-full" />

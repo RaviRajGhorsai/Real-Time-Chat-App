@@ -12,8 +12,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 env = environ.Env(
         DEBUG=(bool, False)
 )
+
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
+f = Fernet(env('ENCRYPT_KEY'))
+
+
+# from cloudinary.models import CloudinaryField
+
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 f = Fernet(env('ENCRYPT_KEY'))
+
 
 # Create your models here.
 
@@ -23,6 +32,10 @@ class User(AbstractUser):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+
+    image = models.ImageField(upload_to='uploads/', blank=True, null=True)
+    # image = CloudinaryField(blank=True, null=True)
+
     # image = models.ImageField(upload_to='uploads/', blank=True, null=True)
     image = CloudinaryField(blank=True, null=True)
     
@@ -30,8 +43,7 @@ class Profile(models.Model):
         return self.user.username
     
 class Group(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    name = models.CharField(max_length=100, default=shortuuid.uuid, unique=True)
+    name = models.CharField(max_length=100, unique=True)
     online_users = models.ManyToManyField(User, related_name='online_count', blank=True)
     members = models.ManyToManyField(User, related_name='members', blank=True)
     is_private = models.BooleanField(default=False)

@@ -15,7 +15,7 @@
     </div>
 
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-      <form method="POST" action="{% url 'signup' %}" class="space-y-6">
+      <form method="POST" action="{% url 'app:signup' %}" class="space-y-6">
         {% csrf_token %}
 
         <div>
@@ -64,7 +64,7 @@
 
       <p class="mt-10 text-center text-sm text-gray-500">
         Already have an account?
-        <a href="{% url 'login' %}" class="font-semibold text-indigo-600 hover:text-indigo-500">Sign in</a>
+        <a href="{% url 'app:login' %}" class="font-semibold text-indigo-600 hover:text-indigo-500">Sign in</a>
       </p>
     </div>
   </div>

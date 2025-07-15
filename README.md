@@ -29,6 +29,4 @@ cd Real-Time-Chat-App
 pip install -r requirements.txt
 ```
 
-## Live At
 
-https://real-time-chat-app-06zl.onrender.com

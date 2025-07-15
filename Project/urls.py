@@ -20,7 +20,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    
+
+    path('admin/', admin.site.urls),
+    path('', include('app.urls', namespace='app')),
+    path('newsfeed/', include('newsfeed.urls', namespace='newsfeed')),
+
     path('theboss/', admin.site.urls),
     path('', include('app.urls')),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+

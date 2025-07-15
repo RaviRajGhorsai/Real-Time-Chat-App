@@ -94,7 +94,7 @@ CHANNEL_LAYERS = {
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 ENVIRONMENT = env('ENVIRONMENT', default='development')
-ENVIRONMENT = 'development'
+ENVIRONMENT = 'production'
 
 if ENVIRONMENT == 'development':
     DATABASES = {

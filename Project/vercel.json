@@ -1,7 +1,7 @@
 {
   "builds": [
     {
-      "src": "manage.py",
+      "src": "your_project/wsgi.py",
       "use": "@vercel/python",
       "config": {
         "installCommand": "pip install -r requirements.txt",
@@ -12,7 +12,7 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "manage.py"
+      "dest": "your_project/wsgi.py"
     }
   ]
 }

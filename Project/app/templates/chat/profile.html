@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Profile{% endblock %}
+
+{% load static %}
+{% block profile %}
+<main class="flex-grow flex items-center justify-center">
+    <div class="text-center">
+      {% if profile.image %}
+      <img 
+        src="{{ profile.image.url }}" 
+        alt="Profile Image" 
+        class="w-48 h-48 rounded-full object-cover border-4 border-blue-500 shadow-lg"
+      />
+      <h2 class="mt-4 text-xl font-semibold text-gray-800">{{ username }}</h2>
+      {% else %}
+        <img 
+        src="{% static 'images/default_img.png' %}" 
+        alt="Profile Image" 
+        class="w-48 h-48 rounded-full object-cover border-4 border-blue-500 shadow-lg"
+      />
+      <h2 class="mt-4 text-xl font-semibold text-gray-800">{{ username }}</h2>
+      <a href="{% url 'app:profile-img' %}" class="mt-4 inline-block text-xl font-semibold text-white bg-blue-600 px-4 py-2 rounded hover:bg-blue-700 transition">
+        Upload image</a>
+      {% endif %}
+      
+      {% if request.user.username != username %}
+      <a href="{% url 'app:start-chat' username %}" class="mt-4 inline-block text-xl font-semibold text-white bg-blue-600 px-4 py-2 rounded hover:bg-blue-700 transition">
+      Chat with me
+      </a>
+      {% endif %}
+      
+    </div>
+  </main>
+ {% endblock %}

@@ -4,6 +4,7 @@
       "src": "manage.py",
       "use": "@vercel/python",
       "config": {
+        "installCommand": "pip install -r requirements.txt",
         "maxLambdaSize": "50mb"
       }
     }

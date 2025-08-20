@@ -34,8 +34,8 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG', default=False)
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.vercel.app']
-# CSRF_TRUSTED_ORIGINS = ['']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.vercel.app', 'real-time-chat-app-06zl.onrender.com']
+CSRF_TRUSTED_ORIGINS = ['real-time-chat-app-06zl.onrender.com']
 
 # Application definition
 

@@ -4,12 +4,12 @@
 <div ws-receive></div>
 <div class="max-w-md mx-auto mt-10 bg-white shadow-lg rounded-xl flex flex-col h-[500px]">
     
-    <div class="bg-blue-600 text-white px-4 py-3 rounded-t-xl flex justify-between items-center">
+    <div class="bg-blue-600 text-white px-4 py-3 rounded-t-xl flex justify-between items-center gap-3">
     {% if chat_group.is_private %}
       {% if other_user %}
       <div id="online-icon"></div>
       {% for p in profile %}
-      <div class="flex flex-col items-center mx-auto">
+      
         <img 
         src="{{  p.image.url }}" 
         alt="Profile Image" 
@@ -17,8 +17,11 @@
       />
       {% endfor %}
       {% for otherUser in other_user %}
-      <div class="text-lg font-semibold  ml-20 -mt-9">@{{ otherUser.username }}</div>
-      </div>
+
+  <div class="text-lg font-semibold justify-center items-center">@{{ otherUser.username }}</div>
+
+
+      
       {% endfor %}
 {% endif %}
       {% else %}
